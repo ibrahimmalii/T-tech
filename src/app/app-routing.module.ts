@@ -1,11 +1,26 @@
+import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './components/auth/login/login.component';
+import { AuthenticationGuard } from './guards/authentication.guard';
 
 const routes: Routes = [
   {
     path: 'auth', 
     loadChildren: () => import('./components/auth/auth.module').then(m => m.AuthModule)
   },
+  {
+    path: 'home', 
+    loadChildren: () => import('./components/roles/roles.module').then(m => m.RolesModule),canActivate: [AuthenticationGuard]
+  },
+  {
+    path: '',
+    component: LoginComponent
+  },
+  {
+    path: '**',
+    component: NotFoundComponent
+  }
 ];
 
 @NgModule({
