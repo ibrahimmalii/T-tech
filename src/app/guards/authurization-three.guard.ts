@@ -23,6 +23,10 @@ export class AuthurizationThreeGuard implements CanActivate {
     | boolean
     | UrlTree {
     let isEmployee = this.userService.isEmployee();
-    return isEmployee ? true : false;
+    if(!isEmployee){
+      this.router.navigateByUrl('/unAuthorized')
+      return false;
+    }
+    return true;
   }
 }

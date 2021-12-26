@@ -1,0 +1,10 @@
+img {
+  width: 100vw;
+  height: 100vh;
+}
+
+.back {
+  position: fixed;
+  margin: auto;
+  bottom: 6%;
+}

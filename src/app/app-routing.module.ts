@@ -1,3 +1,4 @@
+import { UnAuthorizedComponent } from './components/un-authorized/un-authorized.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -14,6 +15,9 @@ const routes: Routes = [
     loadChildren: () => import('./components/roles/roles.module').then(m => m.RolesModule),canActivate: [AuthenticationGuard]
   },
   {
+    path: 'unAuthorized',
+    component: UnAuthorizedComponent
+  },{
     path: '',
     component: LoginComponent
   },

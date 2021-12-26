@@ -23,7 +23,11 @@ export class AuthurizationOneGuard implements CanActivate {
     | boolean
     | UrlTree {
     let isAdmin = this.userService.isAdmin();
-    return isAdmin ? true : false;
+    if(!isAdmin){
+      this.router.navigateByUrl('/unAuthorized')
+      return false;
+    }
+    return true;
 
   }
 }

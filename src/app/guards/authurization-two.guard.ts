@@ -23,6 +23,10 @@ export class AuthurizationTwoGuard implements CanActivate {
     | boolean
     | UrlTree {
     let isClient = this.userService.isClient();
-    return isClient ? true : false;
+    if(!isClient){
+      this.router.navigateByUrl('/unAuthorized')
+      return false;
+    }
+    return true;
   }
 }
